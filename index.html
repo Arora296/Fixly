@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fixly — Empowering Hands That Matter</title>
+
+<link href="assets/css/style.css" rel="stylesheet"/></head>
+<body>
+<nav>
+<div class="nav-logo" onclick="show('home')" title="Go to homepage">
+<!-- Two-gear logo matching brand identity -->
+<svg fill="none" viewbox="0 0 44 38" xmlns="http://www.w3.org/2000/svg">
+<!-- Large gear -->
+<path d="M16 4.5l-1.6 2.8c-.6-.1-1.2-.2-1.8-.2s-1.2.1-1.8.2L9.2 4.5 5.6 6.5l.6 3.2c-.5.4-1 .9-1.4 1.4L1.6 10.5l-2 3.6 2.4 2.1C2 16.7 2 17.3 2 18s0 1.3.1 1.9l-2.4 2.1 2 3.6 3.2-.6c.4.5.9 1 1.4 1.4l-.6 3.2 3.6 2 1.8-3.1c.6.1 1.2.2 1.8.2s1.2-.1 1.8-.2l1.8 3.1 3.6-2-.6-3.2c.5-.4 1-.9 1.4-1.4l3.2.6 2-3.6-2.4-2.1c.1-.6.1-1.2.1-1.9s0-1.3-.1-1.9l2.4-2.1-2-3.6-3.2.6c-.4-.5-.9-1-1.4-1.4l.6-3.2-3.6-2z" fill="currentColor" opacity="0.92"></path>
+<circle cx="14.5" cy="18" fill="var(--bg,#fff)" r="5.2"></circle>
+<circle cx="14.5" cy="18" fill="currentColor" opacity="0.92" r="2.4"></circle>
+<!-- Small gear -->
+<path d="M33 20l-1-1.7c.2-.4.3-.8.3-1.3s-.1-.9-.3-1.3l1-1.7-2.2-1.2-1.1 1.9c-.4-.1-.8-.1-1.2-.1s-.8 0-1.2.1l-1.1-1.9L24 13.7l1 1.7c-.2.4-.3.8-.3 1.3s.1.9.3 1.3l-1 1.7 2.2 1.2 1.1-1.9c.4.1.8.1 1.2.1s.8 0 1.2-.1l1.1 1.9L33 20z" fill="currentColor" opacity="0.92"></path>
+<circle cx="28.5" cy="16" fill="var(--bg,#fff)" r="2.8"></circle>
+<circle cx="28.5" cy="16" fill="currentColor" opacity="0.92" r="1.3"></circle>
+</svg>
+    FIXLY
+  </div>
+<div class="nav-links" id="nav-menu">
+<a class="active" id="nav-home" onclick="show('home')">Home</a>
+<a id="nav-services" onclick="show('services')">Services</a>
+<a id="nav-about" onclick="show('about')">About</a>
+<a id="nav-contact" onclick="show('contact')">Contact</a>
+</div>
+<div class="nav-right">
+<button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Switch to dark mode">
+<svg viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<button class="nav-cta" onclick="show('services')">Get Started</button>
+<button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<!-- HOME -->
+<section class="active" id="home">
+<div class="hero">
+<div class="hero-slogan">Empowering Hands That Matter</div>
+<h1 id="headline"></h1>
+<p>Fixly connects you with vetted, professional tradespeople for any job — big or small. Fast, reliable, and fully guaranteed.</p>
+<div class="hero-btns">
+<button class="btn-primary" onclick="show('services')">Find a Professional</button>
+<button class="btn-secondary" onclick="show('contact')">Join as a Worker</button>
+</div>
+<div class="hero-social">
+<div class="social-item">
+<svg viewbox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+<span>Follow us <strong>@fixly_in</strong> on Instagram</span>
+</div>
+<div class="social-divider"></div>
+<div class="social-item">
+<svg viewbox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+<span><strong>1,000+</strong> views &amp; growing</span>
+</div>
+<div class="social-divider"></div>
+<div class="social-item">
+<svg viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="M2 7l10 7 10-7"></path></svg>
+<span><strong>fixly.online@gmail.com</strong></span>
+</div>
+</div>
+</div>
+<div class="how">
+<div class="section-label">How it works</div>
+<div class="section-title">Three steps to getting it done</div>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h3>Submit your request</h3>
+<p>Describe the job in plain language. Takes under two minutes — no technical knowledge needed.</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h3>Get matched instantly</h3>
+<p>We connect you with available, vetted professionals in your area who are right for the task.</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h3>Work completed</h3>
+<p>Your professional arrives, completes the job to standard, and payment is processed securely.</p>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<h3>Leave a review</h3>
+<p>Rate your experience and help build trust across the Fixly network for future clients.</p>
+</div>
+</div>
+</div>
+<div class="audience">
+<div class="aud-card customer">
+<div class="aud-tag">For Clients</div>
+<h2>Get any job handled with confidence</h2>
+<p>Browse verified professionals, book on your schedule, and pay only when the work meets your expectations.</p>
+<ul class="aud-perks">
+<li>Verified professional profiles with reviews</li>
+<li>Real-time booking and job tracking</li>
+<li>Secure payments with satisfaction guarantee</li>
+<li>Transparent, upfront pricing</li>
+</ul>
+<button class="btn-aud-w" onclick="show('services')">Browse Services</button>
+</div>
+<div class="aud-card worker">
+<div class="aud-tag">For Professionals</div>
+<h2>Grow your business with steady work</h2>
+<p>Join a platform built for tradespeople — manage your schedule, build your reputation, and get paid reliably.</p>
+<ul class="aud-perks">
+<li>Consistent flow of verified job requests</li>
+<li>Professional profile and review system</li>
+<li>Fast, reliable payouts</li>
+<li>Schedule and client management tools</li>
+</ul>
+<button class="btn-aud-b" onclick="show('contact')">Apply to Join</button>
+</div>
+</div>
+</section>
+<!-- SERVICES -->
+<section id="services">
+<div class="services-sec">
+<div class="services-header">
+<div>
+<div class="section-label">Our categories</div>
+<div class="section-title">Real professionals, ready when you are</div>
+</div>
+<button class="cant-find-link" onclick="show('contact')">Can't find your service? Talk to us</button>
+</div>
+<div class="services-grid">
+<div class="service-card" onclick="openModal('plumbing')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5c0 5-5 11-5 11S7 12 7 7a5 5 0 0 1 5-5z"></path><circle cx="12" cy="7" r="2"></circle></svg>
+</div>
+<h3>Plumbing</h3>
+<p>Leak repairs, pipe installation, and full plumbing assessments.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('electrical')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
+</div>
+<h3>Electrical</h3>
+<p>Wiring, fixtures, safety inspections, and panel upgrades.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('painting')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 21V9"></path></svg>
+</div>
+<h3>Painting</h3>
+<p>Interior and exterior painting with professional-grade finishes.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('ac')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M6 8H5a4 4 0 0 0 0 8h1"></path><line x1="6" x2="18" y1="12" y2="12"></line></svg>
+</div>
+<h3>AC &amp; HVAC</h3>
+<p>Installation, servicing, and repair of climate control systems.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('carpentry')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><rect height="15" rx="2" width="20" x="2" y="7"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+</div>
+<h3>Carpentry</h3>
+<p>Custom furniture, door fitting, shelving, and woodwork.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('cleaning')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+</div>
+<h3>Deep Cleaning</h3>
+<p>Move-in, move-out, post-construction, and full property cleans.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('renovation')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+</div>
+<h3>Renovation</h3>
+<p>Kitchen, bathroom, and full-space remodelling and refurbishment.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+<div class="service-card" onclick="openModal('security')">
+<div class="svc-icon">
+<svg viewbox="0 0 24 24"><rect height="11" rx="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+</div>
+<h3>Security</h3>
+<p>Smart locks, CCTV installation, and home security systems.</p>
+<div class="svc-learn">Learn more →</div>
+</div>
+</div>
+</div>
+<div class="services-cta">
+<h2>Don't see what you need?</h2>
+<p>We cover a wide range of trades and specialisms. Tell us what you're looking for and we'll find the right professional for you.</p>
+<button class="btn-primary" onclick="show('contact')">Discuss your requirements</button>
+</div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+<div class="about">
+<div class="about-inner">
+<div class="about-text">
+<div class="section-label">Our story</div>
+<div class="section-title">Built for the people who build</div>
+<p>Fixly was born out of a simple frustration: finding a reliable, skilled professional in India shouldn't be this hard. Whether it's a leaking pipe, a faulty switch, or a complete home renovation — getting the right person for the job has always felt like a lottery.</p>
+<p>We set out to change that. Fixly is a platform that bridges the gap between talented tradespeople and the homeowners, renters, and businesses who need them — building trust on both sides through transparency, accountability, and great work.</p>
+<p>We are proudly based in India, built for Indian homes, and focused on the unique challenges of our local market. From metro apartments to smaller-town houses, Fixly brings professional-quality service to your doorstep.</p>
+<p>Every professional on our platform is personally vetted, trained to communicate clearly, and held to a consistent quality standard. If a job doesn't meet expectations, we make it right — no arguments, no hassle.</p>
+<p>We believe that the people who fix, build, and maintain our homes deserve just as much respect and opportunity as anyone else. Fixly gives skilled workers a professional platform to grow their business, find steady work, and be recognised for the quality they deliver.</p>
+<button onclick="show('contact')" onmouseout="this.style.opacity=1" onmouseover="this.style.opacity=0.8" style="background:#111;color:#fff;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;margin-top:8px;transition:opacity 0.2s;">Partner with us</button>
+<div class="founder-card" style="margin-top:40px;">
+<h3>Aarav Arora</h3>
+<div class="founder-role">Founder &amp; CEO, Fixly</div>
+<p>Aarav Arora started Fixly after experiencing firsthand how difficult it was to find trustworthy home-service professionals in India. A firm believer in the dignity of skilled labour, he built Fixly to empower workers and give clients a service they could truly rely on.</p>
+<p>His vision is straightforward: a platform where quality work is rewarded, where workers are respected, and where every homeowner can find the right help without stress.</p>
+<a class="founder-link" href="https://aaravarora.online" rel="noopener" target="_blank">
+            Visit portfolio
+            <svg viewbox="0 0 24 24"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+</a>
+</div>
+</div>
+<div class="about-visual">
+<h3>What we stand for</h3>
+<div class="value">
+<div class="value-dot"></div>
+<div>
+<h4>Trust above all</h4>
+<p>Every professional is fully vetted, reviewed, and held to a consistent standard of quality.</p>
+</div>
+</div>
+<div class="value">
+<div class="value-dot"></div>
+<div>
+<h4>Professionals first</h4>
+<p>We build tools that enable skilled workers to operate professionally and grow sustainably.</p>
+</div>
+</div>
+<div class="value">
+<div class="value-dot"></div>
+<div>
+<h4>Simplicity</h4>
+<p>No unnecessary friction. Fixly is designed to be fast, clear, and easy for everyone involved.</p>
+</div>
+</div>
+<div class="value">
+<div class="value-dot"></div>
+<div>
+<h4>Made in India</h4>
+<p>We understand Indian homes, Indian budgets, and Indian expectations. Built here, for here.</p>
+</div>
+</div>
+<div class="value">
+<div class="value-dot"></div>
+<div>
+<h4>Community</h4>
+<p>Ratings, reviews, and long-term relationships are at the core of how Fixly operates.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="contact">
+<div class="contact-inner">
+<div class="section-label">Get in touch</div>
+<div class="section-title">Let's get to work</div>
+<p>Whether you are a client with a project in mind, a professional looking to join our network, or have a general enquiry — we are happy to hear from you.</p>
+<div class="contact-info">
+<div class="contact-item">
+<svg fill="none" height="16" stroke="#5DCAA5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="16"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="M2 7l10 7 10-7"></path></svg>
+<a href="mailto:fixly.online@gmail.com">fixly.online@gmail.com</a>
+</div>
+<div class="contact-item">
+<svg fill="none" height="16" stroke="#5DCAA5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="16"><rect height="20" rx="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+<a href="https://instagram.com/fixly_in" rel="noopener" target="_blank">@fixly_in</a>
+</div>
+</div>
+<div class="form-row"><label>Full name</label><input placeholder="Rahul Sharma" type="text"/></div>
+<div class="form-row"><label>Email address</label><input placeholder="rahul@email.com" type="email"/></div>
+<div class="form-row">
+<label>I am enquiring as a...</label>
+<select>
+<option>Client looking to hire a professional</option>
+<option>Tradesperson looking to join</option>
+<option>Business or contractor</option>
+<option>General enquiry</option>
+</select>
+</div>
+<div class="form-row"><label>Message</label><textarea placeholder="Please describe your requirements or enquiry..."></textarea></div>
+<button class="form-submit" onclick="submitForm()">Submit enquiry</button>
+</div>
+</div>
+</section>
+<footer>
+<strong>FIXLY</strong> — Empowering Hands That Matter<br/>
+  Based in India  | 
+  <a href="mailto:fixly.online@gmail.com">fixly.online@gmail.com</a>  | 
+  <a href="https://instagram.com/fixly_in" rel="noopener" target="_blank">@fixly_in</a><br/>
+<span>© 2026 Fixly. All rights reserved.</span>
+</footer>
+<div class="toast" id="toast">Enquiry submitted. We will be in touch shortly.</div>
+<!-- SERVICE MODAL -->
+<div class="modal-overlay" id="service-modal">
+<div class="modal">
+<button class="modal-close" onclick="closeModal()">×</button>
+<div class="modal-icon" id="modal-icon"></div>
+<div class="modal-tag" id="modal-tag"></div>
+<h2 id="modal-title"></h2>
+<p id="modal-desc"></p>
+<ul id="modal-list"></ul>
+<button class="modal-cta" onclick="closeModal(); show('contact');">Book this service</button>
+</div>
+</div>
+
+<script src="assets/js/main.js"></script></body>
+</html>

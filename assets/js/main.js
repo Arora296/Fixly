@@ -65,8 +65,34 @@ function updateThemeIcon() {
   }
 }
 
-// Contact form
+// Contact form — opens Gmail web compose pre-filled to the Fixly inbox
+const FIXLY_EMAIL = 'fixly.online@gmail.com';
+
 function submitForm() {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const type = document.getElementById('cf-type').value;
+  const message = document.getElementById('cf-message').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email address, and message before submitting.');
+    return;
+  }
+
+  const subject = `Fixly enquiry from ${name}`;
+  const body =
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Enquiring as: ${type}\n\n` +
+    `Message:\n${message}`;
+
+  const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1' +
+    '&to=' + encodeURIComponent(FIXLY_EMAIL) +
+    '&su=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+
+  window.open(gmailUrl, '_blank', 'noopener');
+
   const t = document.getElementById('toast');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3500);

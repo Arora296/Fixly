@@ -127,12 +127,12 @@ section.active { display: block; }
 body.dark .hero { background: #0a0a0a; }
 
 .hero-disclaimer {
-  font-size: clamp(9px, 1.65vw, 12.5px);
-  font-weight: 500;
-  letter-spacing: 0.2px;
+  font-size: clamp(7px, 1.05vw, 10px);
+  font-weight: 400;
+  letter-spacing: 0.15px;
   text-transform: none;
-  color: rgba(255,255,255,0.42);
-  margin-bottom: 14px;
+  color: rgba(255,255,255,0.32);
+  margin-bottom: 32px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

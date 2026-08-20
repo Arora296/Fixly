@@ -298,7 +298,7 @@ function aiRenderFallback() {
    model isn't confident, and the UI falls back gracefully.
    ------------------------------------------------------------ */
 
-const FIXLY_AI_ENDPOINT = "https://onrender.com"; // <-- your classifier's live URL
+const FIXLY_AI_ENDPOINT = "https://text-classifier-wyut.onrender.com"; // <-- your classifier's live URL
 
 async function fetchFixlyMatch(message) {
   const response = await fetch(FIXLY_AI_ENDPOINT, {

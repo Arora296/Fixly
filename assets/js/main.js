@@ -181,3 +181,133 @@ document.getElementById('service-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
 
+/* ============================================================
+   AI SERVICE FINDER
+   The client describes a problem in plain language; Fixly AI
+   (your Python backend) maps it to one of the categories in the
+   `services` object above, and we render the match using the
+   same data and openModal() flow the Services grid already uses.
+   ============================================================ */
+
+let aiHistory = [];
+let aiBusy = false;
+
+function aiChip(el) {
+  document.getElementById('ai-input').value = el.textContent;
+  aiSend();
+}
+
+function aiSend() {
+  const input = document.getElementById('ai-input');
+  const text = input.value.trim();
+  if (!text || aiBusy) return;
+
+  document.getElementById('ai-log-empty').style.display = 'none';
+  document.getElementById('ai-result').innerHTML = '';
+
+  aiAddTurn('user', text);
+  aiHistory.push({ role: 'user', content: text });
+  input.value = '';
+  aiBusy = true;
+  document.getElementById('ai-input').disabled = true;
+
+  const thinkingTurn = aiAddTurn('ai', null, true);
+
+  fetchFixlyMatch(text)
+    .then((data) => {
+      thinkingTurn.remove();
+      const category = data && data.category;
+      const message = (data && data.message) || "Here's what I found:";
+      aiAddTurn('ai', message);
+      aiHistory.push({ role: 'assistant', content: message });
+
+      if (category && services[category]) {
+        aiRenderMatch(category);
+      } else {
+        aiRenderFallback();
+      }
+    })
+    .catch((err) => {
+      console.error('Fixly AI match failed:', err);
+      thinkingTurn.remove();
+      aiAddTurn('ai', "Fixly AI is temporarily unavailable — please try again in a moment, or talk to us directly.");
+      aiRenderFallback();
+    })
+    .finally(() => {
+      aiBusy = false;
+      document.getElementById('ai-input').disabled = false;
+    });
+}
+
+function aiAddTurn(role, text, thinking) {
+  const log = document.getElementById('ai-log');
+  const row = document.createElement('div');
+  row.className = 'ai-turn ' + role;
+  const label = role === 'user' ? 'You' : 'Fixly AI';
+  row.innerHTML = `<div class="ai-turn-label">${label}</div>` +
+    (thinking
+      ? `<div class="ai-thinking"><span></span><span></span><span></span></div>`
+      : `<p></p>`);
+  if (!thinking) row.querySelector('p').textContent = text;
+  log.appendChild(row);
+  row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  return row;
+}
+
+function aiRenderMatch(key) {
+  const s = services[key];
+  const result = document.getElementById('ai-result');
+  result.innerHTML = `
+    <div class="ai-match-card">
+      <div class="ai-match-icon">${s.icon}</div>
+      <div class="ai-match-body">
+        <div class="ai-match-tag">Best match · ${s.tag}</div>
+        <h4>${s.title}</h4>
+        <p>${s.desc}</p>
+        <div class="ai-match-actions">
+          <button class="ai-match-btn" onclick="openModal('${key}')">View ${s.title}</button>
+          <button class="ai-match-btn secondary" onclick="show('contact')">Book this service</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function aiRenderFallback() {
+  const result = document.getElementById('ai-result');
+  result.innerHTML = `
+    <div class="ai-fallback">
+      We couldn't pin down an exact category from that description. Try rephrasing, or
+      <a href="#" onclick="show('contact'); return false;" style="color:var(--teal); text-decoration: underline;">talk to us directly</a>.
+    </div>`;
+}
+
+/* ------------------------------------------------------------
+   🔌 PYTHON MODEL API — connect your backend here
+   ------------------------------------------------------------
+   Request sent to your backend (JSON body):
+     { "message": "the user's latest description", "history": [...] }
+
+   Response your backend should return (JSON body):
+     { "category": "electrical", "message": "This sounds like a job for our Electrical team..." }
+
+   `category` must be one of: plumbing, electrical, painting, ac,
+   carpentry, cleaning, renovation, security — matching the keys in
+   the `services` object above. Return null (or omit it) when the
+   model isn't confident, and the UI falls back gracefully.
+   ------------------------------------------------------------ */
+
+const FIXLY_AI_ENDPOINT = "http://localhost:5000/api/match"; // <-- point this at your model
+
+async function fetchFixlyMatch(message) {
+  const response = await fetch(FIXLY_AI_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, history: aiHistory })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Fixly AI backend responded with status ${response.status}`);
+  }
+
+  return await response.json();
+}

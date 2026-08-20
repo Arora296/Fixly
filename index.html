@@ -17,6 +17,7 @@
 <a id="nav-services" onclick="show('services')">Services</a>
 <a id="nav-about" onclick="show('about')">About</a>
 <a id="nav-contact" onclick="show('contact')">Contact</a>
+<a id="nav-ai" onclick="show('ai')">AI Match</a>
 </div>
 <div class="nav-right">
 <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Switch to dark mode">
@@ -285,6 +286,47 @@
 </div>
 <div class="form-row"><label for="cf-message">Message</label><textarea id="cf-message" placeholder="Please describe your requirements or enquiry..."></textarea></div>
 <button class="form-submit" onclick="submitForm()">Submit enquiry</button>
+</div>
+</div>
+</section>
+<!-- AI MATCH -->
+<section id="ai">
+<div class="services-sec">
+<div class="services-header">
+<div>
+<div class="section-label">AI powered</div>
+<div class="section-title">Not sure what you need?</div>
+</div>
+</div>
+<p class="ai-lede">Describe the problem in plain language — no technical terms needed. Fixly AI matches you with the right category and the professional to call.</p>
+
+<div class="ai-panel">
+<div class="ai-panel-inner">
+
+<div class="ai-log" id="ai-log">
+<div class="ai-log-empty" id="ai-log-empty">
+<div class="ai-log-icon">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+</div>
+<p>Tell us what's going on — e.g. "my kitchen tap won't stop dripping" or "the AC in the bedroom isn't cooling."</p>
+</div>
+</div>
+
+<div class="ai-result" id="ai-result"></div>
+
+<div class="ai-inputrow">
+<input id="ai-input" onkeydown="if(event.key==='Enter'){aiSend();}" placeholder="Describe the problem..." type="text"/>
+<button class="ai-send-btn" onclick="aiSend()">Find my service</button>
+</div>
+<div class="ai-chips">
+<button class="ai-chip" onclick="aiChip(this)">Leaking tap</button>
+<button class="ai-chip" onclick="aiChip(this)">AC not cooling</button>
+<button class="ai-chip" onclick="aiChip(this)">Flickering lights</button>
+<button class="ai-chip" onclick="aiChip(this)">Need a deep clean</button>
+</div>
+<div class="ai-disclaimer">Fixly AI can make mistakes. For urgent safety issues (gas, fire, electrical shock), contact a professional directly.</div>
+
+</div>
 </div>
 </div>
 </section>

@@ -1,4 +1,3 @@
-
 // Build the animated headline
 (function buildHeadline() {
   const phrase = "The skilled workers you need, exactly when you need them";
@@ -217,11 +216,14 @@ function aiSend() {
     .then((data) => {
       thinkingTurn.remove();
       const category = data && data.category;
-      const message = (data && data.message) || "Here's what I found:";
+      const match = category && services[category];
+      const message = match
+        ? `It looks like a ${match.title} problem.`
+        : "We couldn't quite place that one — try rephrasing, or talk to us directly.";
       aiAddTurn('ai', message);
       aiHistory.push({ role: 'assistant', content: message });
 
-      if (category && services[category]) {
+      if (match) {
         aiRenderMatch(category);
       } else {
         aiRenderFallback();
@@ -282,13 +284,13 @@ function aiRenderFallback() {
 }
 
 /* ------------------------------------------------------------
-   🔌 PYTHON MODEL API — connect your backend here
+   🔌 PYTHON MODEL API — text classification backend
    ------------------------------------------------------------
    Request sent to your backend (JSON body):
-     { "message": "the user's latest description", "history": [...] }
+     { "text": "the user's latest description" }
 
-   Response your backend should return (JSON body):
-     { "category": "electrical", "message": "This sounds like a job for our Electrical team..." }
+   Response expected back (JSON body):
+     { "category": "electrical" }
 
    `category` must be one of: plumbing, electrical, painting, ac,
    carpentry, cleaning, renovation, security — matching the keys in
@@ -296,13 +298,13 @@ function aiRenderFallback() {
    model isn't confident, and the UI falls back gracefully.
    ------------------------------------------------------------ */
 
-const FIXLY_AI_ENDPOINT = "http://localhost:5000/api/match"; // <-- point this at your model
+const FIXLY_AI_ENDPOINT = "https://onrender.com"; // <-- your classifier's live URL
 
 async function fetchFixlyMatch(message) {
   const response = await fetch(FIXLY_AI_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message, history: aiHistory })
+    body: JSON.stringify({ text: message })
   });
 
   if (!response.ok) {
